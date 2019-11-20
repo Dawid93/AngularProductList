@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../product';
+import { filter } from 'minimatch';
 
 @Component({
   selector: 'app-products-list',
@@ -7,12 +8,20 @@ import { IProduct } from '../product';
   styleUrls: ['./products-list.component.css']
 })
 export class ProductsListComponent implements OnInit {
-
   pageTitle: string = 'Product List';
   imageWidth: number = 50;
   showImage: boolean = false;
-  listFilter: string = "";
 
+  _listFilter: string;
+  get listFilter(): string {
+    return this._listFilter;
+  }
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
+  }
+
+  filteredProducts: IProduct[];
   products: IProduct[] = [
     {
       "productId": 1,
@@ -40,7 +49,16 @@ export class ProductsListComponent implements OnInit {
     this.showImage = !this.showImage;
   }
 
-  constructor() { }
+  performFilter(filterBy: string): IProduct[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.products.filter((product: IProduct) => 
+      product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
+
+  constructor() { 
+    this.filteredProducts = this.products;
+    this._listFilter = "";
+  }
 
   ngOnInit() {
     console.log('In OnInit');
