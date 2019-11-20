@@ -10,6 +10,7 @@ export class ProductsListComponent implements OnInit {
   pageTitle: string = 'Product List';
   imageWidth: number = 50;
   showImage: boolean = false;
+  listFilter: string = "";
 
   products: any[] = [
     {
