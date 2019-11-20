@@ -9,6 +9,7 @@ export class ProductsListComponent implements OnInit {
 
   pageTitle: string = 'Product List';
   imageWidth: number = 50;
+  showImage: boolean = false;
 
   products: any[] = [
     {
@@ -32,6 +33,10 @@ export class ProductsListComponent implements OnInit {
       "imageUrl": "assets/images/garden_cart.png"
     }
   ];
+
+  toggleImage(): void {
+    this.showImage = !this.showImage;
+  }
   
   constructor() { }
 
