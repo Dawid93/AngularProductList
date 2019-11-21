@@ -1,4 +1,4 @@
-import { Component,EventEmitter, OnChanges, Input, Output } from '@angular/core';
+import { Component, EventEmitter, OnChanges, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-star',
