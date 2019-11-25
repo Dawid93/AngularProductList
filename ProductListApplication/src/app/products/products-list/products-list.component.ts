@@ -4,7 +4,6 @@ import { filter } from 'minimatch';
 import { ProductService } from '../product.service';
 
 @Component({
-  selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css']
 })
