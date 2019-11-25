@@ -3,7 +3,18 @@
         {{ pageTitle + ': ' + product.productName }}
     </div>
     <div class="card-body">
-
+        <div class="row">
+            <div class="col-md-3">
+                <img class="center-block img-responsive" [src]='product.imageUrl' [style.width.px]='200'>
+            </div>
+            <div class="col-md-9">
+                <h1>Name: {{ product.productName }}</h1>
+                <h5>Code: {{ product.productCode | convertToSpaces: '-' }}</h5>
+                <h5>Release Data: {{ product.releaseDate }}</h5>
+                <h5>Price: {{ product.price | currency: 'EUR' }}</h5>
+                <app-star [rating]='product.starRating'></app-star>
+            </div>
+        </div>
     </div>
     <div class="card-footer">
         <button class="btn btn-outline-secondary" (click)='onBack()'>
